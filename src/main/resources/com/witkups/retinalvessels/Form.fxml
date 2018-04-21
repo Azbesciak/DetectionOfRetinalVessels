@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<VBox fx:id="root" prefHeight="700" prefWidth="1200" xmlns="http://javafx.com/javafx/8.0.121"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.witkups.retinalvessels.Controller">
+    <GridPane hgap="10" prefHeight="50.0" vgap="10">
+        <Button fx:id="mainFileBtn" mnemonicParsing="false" text="Original image" GridPane.columnIndex="0"
+                GridPane.rowIndex="0" maxWidth="Infinity"/>
+        <Label text="Selected File:" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Label fx:id="mainFileLabel" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <Button fx:id="mapFileBtn" mnemonicParsing="false" text="Map image" GridPane.columnIndex="0"
+                GridPane.rowIndex="1" maxWidth="Infinity"/>
+        <Label text="Selected File:" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Label fx:id="mapFileLabel" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        <Button fx:id="fovFileBtn" mnemonicParsing="false" text="FOV image" GridPane.columnIndex="0"
+                GridPane.rowIndex="2" maxWidth="Infinity"/>
+        <Label text="Selected FOV:" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <Label fx:id="fovFileLabel" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+        <Button fx:id="startBtn" mnemonicParsing="false" text="Start" GridPane.columnIndex="4"
+                GridPane.rowIndex="1" maxWidth="Infinity"/>
+        <columnConstraints>
+            <ColumnConstraints/>
+            <ColumnConstraints/>
+            <ColumnConstraints prefWidth="100"/>
+            <ColumnConstraints/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints/>
+            <RowConstraints/>
+            <RowConstraints/>
+        </rowConstraints>
+        <opaqueInsets>
+            <Insets/>
+        </opaqueInsets>
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+        </padding>
+    </GridPane>
+    <GridPane hgap="10" maxHeight="Infinity" vgap="10">
+        <Label GridPane.columnIndex="0" GridPane.rowIndex="0">Original:</Label>
+        <ImageView fx:id="originalImgView" pickOnBounds="true" preserveRatio="true"
+                   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Label GridPane.columnIndex="1" GridPane.rowIndex="0">Map:</Label>
+        <ImageView fx:id="mapImgView" pickOnBounds="true" preserveRatio="true"
+                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Label GridPane.columnIndex="2" GridPane.rowIndex="0">FOV:</Label>
+        <ImageView fx:id="fovImgView" pickOnBounds="true" preserveRatio="true"
+                   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        <Label GridPane.columnIndex="0" GridPane.rowIndex="2" fx:id="resProcLab" visible="false">Result Map (processing):</Label>
+        <ImageView fx:id="resultProcImgView" pickOnBounds="true" preserveRatio="true"
+                   GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Label GridPane.columnIndex="0" GridPane.rowIndex="2" fx:id="resMLLab" visible="false">Result Map (ML):</Label>
+        <ImageView fx:id="resultMLImgView" pickOnBounds="true" preserveRatio="true"
+                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <columnConstraints>
+            <ColumnConstraints percentWidth="32"/>
+            <ColumnConstraints percentWidth="32"/>
+            <ColumnConstraints percentWidth="32"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints prefHeight="20"/>
+            <RowConstraints/>
+            <RowConstraints prefHeight="20"/>
+            <RowConstraints/>
+        </rowConstraints>
+        <opaqueInsets>
+            <Insets/>
+        </opaqueInsets>
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+        </padding>
+    </GridPane>
+</VBox>
