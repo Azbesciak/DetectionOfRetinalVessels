@@ -12,32 +12,6 @@ import scalafx.scene.image.Image
 import scala.language.postfixOps
 
 object Utils {
-
-  object MatUtils {
-    val java2DFrameConverter = new Java2DFrameConverter()
-    val converter = new OpenCVFrameConverter.ToIplImage
-  }
-
-  implicit class MatUtils(val mat: Mat) {
-    def toGray(): Mat = {
-      val res = new Mat()
-      cvtColor(mat, res, CV_BGR2GRAY, 1)
-      res
-    }
-
-    def mat2Image() = {
-      val frame = MatUtils.converter.convert(mat)
-      val image = MatUtils.java2DFrameConverter.convert(frame)
-      toFXImage(image, null)
-    }
-  }
-
-  implicit class IplImageUtils(val img: IplImage) {
-    def scaleToHeight(mat: Mat, height: Double): Unit = {
-
-    }
-  }
-
   implicit class Elvis[T >: Null](val t: T) {
     def ?[X >: Null](f: (T) => X): X = if (t != null) f(t) else null
   }

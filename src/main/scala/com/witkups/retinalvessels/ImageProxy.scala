@@ -23,6 +23,10 @@ case class ImageProxy(
                        var file: File = null,
                        var image: Image = null,
                      ) {
+  file ? (f => {
+    image = f.img
+    imageView.image = image
+  })
   btn setOnMouseClicked { _ =>
     file = getImage(fileType)
     labelInfo.text = file ? (_.getName)
