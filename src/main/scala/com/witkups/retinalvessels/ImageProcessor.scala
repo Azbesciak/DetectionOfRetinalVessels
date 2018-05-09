@@ -98,14 +98,17 @@ object ImageProcessor {
       clahe.apply(transformed, transformed)
       val threshed = new Mat()
       threshold(transformed, threshed, 15, 255, THRESH_BINARY)
+      equalizeHist(transformed, transformed)
+      medianBlur(transformed, transformed, 11)
+      morphologyEx(transformed, transformed, MORPH_OPEN, getStructuringElement(MORPH_ELLIPSE, (11, 11)))
+      morphologyEx(transformed, transformed, MORPH_CLOSE, getStructuringElement(MORPH_ELLIPSE, (11, 11)))
       val cons = new MatVector()
       findContours(threshed.clone(), cons, RETR_LIST, CHAIN_APPROX_SIMPLE)
       val mask = filledMat()(0)
-      println(cons.size())
       var counter = 0
         (0L to cons.size()-1).toArray
           .map(i => cons.get(i))
-          .withFilter(c => contourArea(c) <= 200)
+          .withFilter(c => contourArea(c).between(20, 200))
           .map(_.toVector())
           .foreach { c =>
             drawContours(mask, c, -1, 0)
@@ -128,6 +131,7 @@ object ImageProcessor {
           }
         })
       bitwise_and(transformed, transformed, xmask)
+      medianBlur(transformed, transformed, 23)
       transformed
     }
   }
